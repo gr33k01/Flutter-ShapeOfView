@@ -16,11 +16,11 @@ class ArcShape extends Shape {
   });
 
   @override
-  Path build({Rect rect, double scale}) {
-    return generatePath(rect, scale);
+  Path build({Rect? rect, double? scale}) {
+    return generatePath(rect!, scale);
   }
 
-  Path generatePath(Rect rect, double scale) {
+  Path generatePath(Rect rect, double? scale) {
     final size = rect.size;
     switch (this.position) {
       case ArcPosition.Top:
@@ -40,7 +40,7 @@ class ArcShape extends Shape {
             ..lineTo(0.0, size.height)
             ..close();
         }
-        break;
+
       case ArcPosition.Bottom:
         if (direction == ArcDirection.Outside) {
           return Path()
@@ -62,7 +62,7 @@ class ArcShape extends Shape {
             ..lineTo(0.0, 0.0)
             ..close();
         }
-        break;
+
       case ArcPosition.Left:
         if (direction == ArcDirection.Outside) {
           return Path()
@@ -81,7 +81,7 @@ class ArcShape extends Shape {
             ..lineTo(size.width, 0.0)
             ..close();
         }
-        break;
+
       default: //right
         if (direction == ArcDirection.Outside) {
           return Path()
@@ -104,7 +104,6 @@ class ArcShape extends Shape {
             ..lineTo(0.0, 0.0)
             ..close();
         }
-        break;
     }
   }
 }
